@@ -28,7 +28,6 @@ class LegalBlock extends BlockBase {
             'logo_template' => "Empty",
             'link_template' => "Emtpy",
             'label_display' => 0,
-            'html' => "",
         ];
     }
 
@@ -73,25 +72,12 @@ class LegalBlock extends BlockBase {
         $values = $form_state->getValues();
         $this->configuration['link_template'] = $values['link_template'];
         $this->configuration['logo_template'] = $values['logo_template'];
-        // Build once on submit and reuse that HTML.
-        // Generating the HTML from the template on each build()
-        // runs the risk of the template not being loaded due to
-        // a cache clear. If the template is not loaded a `drush cr` fixes it.
-        // Sadly there seems to be no way to do this from code...
-        $this->configuration['html'] = $this->doBuild();
     }
 
     /**
      * {@inheritDoc}
      */
-    function build() {
-        return ['#children' => $this->configuration['html']];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function doBuild() {
+    public function build() {
         $templates = $this->getTemplates();
 
         $links = $templates['links'][$this->configuration['link_template']] ?? [];
@@ -118,14 +104,12 @@ class LegalBlock extends BlockBase {
             }
         }
 
-        $renderable = [
+        return [
             '#theme' => 'block--fau_block--default',
             '#height' => $minLogoHeight,
             '#logos' => $logos,
             '#links' => $links,
         ];
-
-        return \Drupal::service('renderer')->render($renderable);
     }
 
     /**
