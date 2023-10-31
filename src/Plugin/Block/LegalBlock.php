@@ -105,7 +105,7 @@ class LegalBlock extends BlockBase {
         }
 
         return [
-            '#theme' => 'block--fau_block--default',
+            '#theme' => 'block--fau_block--oin',
             '#height' => $minLogoHeight,
             '#logos' => $logos,
             '#links' => $links,

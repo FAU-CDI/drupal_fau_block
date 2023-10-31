@@ -18,6 +18,23 @@ logos:
       alt: FAU Competence Center for Research Data and Information
       height: 185
       url: https://www.cdi.fau.de/
+  OiN:
+    - image: fau_logo.svg
+      alt: FAU
+      height: 110
+      url: https://fau.de/
+    - image: bmbf_logo.svg
+      alt: BMBF
+      height: 110
+      url: http://www.bmbf.de/
+    - image: wisski_logo.png
+      alt: WissKI
+      height: 110
+      url: http://wiss-ki.eu/
+    - image: cdi_logo.svg
+      alt: FAU Competence Center for Research Data and Information
+      height: 110
+      url: https://www.cdi.fau.de/
 
 links:
   Empty: []
@@ -28,3 +45,14 @@ links:
       url: /barrierefreiheit
     - text: Datenschutz
       url: /datenschutz
+  OiN:
+    - text: Projekt
+      url: https://objekte-im-netz.fau.de/projekt/
+    - text: Sammlungen und Museen
+      url: https://www.fau.de/fau/geschichte-und-erinnerungskultur/sammlungen-der-fau/
+    - text: Impressum
+      url: /impressum
+    - text: Datenschutz
+      url: /datenschutz
+    - text: Barrierefreiheit
+      url: /barrierefreiheit

@@ -68,5 +68,12 @@ function fau_block_theme($existing, $type, $theme, $path) {
         'links' => [],
       ],
     ],
+    'block--fau_block--oin' => [
+      'variables' => [
+        'height' => 0,
+        'logos' => [],
+        'links' => [],
+      ],
+    ],
   ];
 }
