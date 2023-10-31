@@ -85,7 +85,6 @@ class LegalBlock extends BlockBase {
      * {@inheritDoc}
      */
     function build() {
-        dpm($this->configuration);
         return ['#children' => $this->configuration['html']];
     }
 
