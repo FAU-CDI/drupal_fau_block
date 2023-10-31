@@ -187,12 +187,13 @@ class LegalBlock extends BlockBase {
      */
     protected static function prefixImages(array $logoTemplates, string $context = self::DEFAULT): array {
         // Prefix the module path to the default template images.
-        $defaultPath = \Drupal::service('extension.list.module')->getPath('fau_block'); // TODO: dependency injection
+        $modulePath = \Drupal::service('extension.list.module')->getPath('fau_block'); // TODO: dependency injection
+        $basePath = \Drupal::request()->getBasePath();
         foreach ($logoTemplates as $name => $logos) {
             foreach ($logos as $index => $logo) {
                 switch ($context) {
                     case self::DEFAULT:
-                        $logoTemplates[$name][$index]['image'] = "/$defaultPath/images/$name/" . $logo['image'];
+                        $logoTemplates[$name][$index]['image'] = $basePath . "/$modulePath/images/$name/" . $logo['image'];
                         break;
                     case self::CUSTOM:
                         $logoTemplates[$name][$index]['image'] = "public://fau_block/$name/" . $logo['image'];
@@ -214,9 +215,6 @@ class LegalBlock extends BlockBase {
      */
     protected function sanitizeValues(array $templateTypes): array {
         $safeAttr = function(string $value) { return htmlspecialchars($value, ENT_QUOTES, 'UTF-8'); };
-        $prefixImage = function(string $image) {
-            return htmlspecialchars(\Drupal::request()->getBasePath() . $image,  ENT_QUOTES, 'UTF-8');
-        };
         $handleUrl = function(string $url) {
             // Prefix the base path to relative URLs to
             // handle multi site installations correctly.
@@ -230,7 +228,7 @@ class LegalBlock extends BlockBase {
         // Mapping the different values to each sanitizing function.
         $sanitizing = [
             'logos' => [
-                'image' => $prefixImage,
+                'image' => $safeAttr,
                 'alt' => $safeAttr,
                 'height' => $id,
                 'url' => $handleUrl,
