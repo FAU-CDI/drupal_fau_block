@@ -214,6 +214,9 @@ class LegalBlock extends BlockBase {
      */
     protected function sanitizeValues(array $templateTypes): array {
         $safeAttr = function(string $value) { return htmlspecialchars($value, ENT_QUOTES, 'UTF-8'); };
+        $prefixImage = function(string $image) {
+            return htmlspecialchars(\Drupal::request()->getBasePath() . $image,  ENT_QUOTES, 'UTF-8');
+        };
         $handleUrl = function(string $url) {
             // Prefix the base path to relative URLs to
             // handle multi site installations correctly.
@@ -227,7 +230,7 @@ class LegalBlock extends BlockBase {
         // Mapping the different values to each sanitizing function.
         $sanitizing = [
             'logos' => [
-                'image' => $safeAttr,
+                'image' => $prefixImage,
                 'alt' => $safeAttr,
                 'height' => $id,
                 'url' => $handleUrl,
