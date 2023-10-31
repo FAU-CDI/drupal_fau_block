@@ -1,0 +1,21 @@
+logos:
+  Empty: []
+  Dark:
+    - image: fau_logo.svg
+      alt: FAU
+      height: 185
+      url: https://fau.de/
+    - image: cdi_logo.svg
+      alt: FAU Competence Center for Research Data and Information
+      height: 185
+      url: https://www.cdi.fau.de/
+
+links:
+  Empty: []
+  CDI:
+    - text: Impressum
+      url: /impressum
+    - text: Barrierefreiheit
+      url: /barrierefreiheit
+    - text: Datenschutz
+      url: /datenschutz

@@ -1,0 +1,21 @@
+{# fau_block/templates/block--fau-block--default.html.twig #}
+<table style="border-spacing: 30px;">
+    <tbody>
+        <tr>
+            <td>
+                {% for link in links %}
+                    <p>
+                        <a href='{{ link.url }}'>{{ link.text }}</a></br>
+                    </p>
+                {% endfor %}
+            </td>
+            {% for logo in logos %}
+                <td>
+                    <a href="{{ logo.url }}" target="_blank" rel="noopener noreferer">
+                        <img alt="{{ logo.alt }}" src="{{ logo.image }}" style="height: {{ height }}px; " />
+                    </a>
+                </td>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>

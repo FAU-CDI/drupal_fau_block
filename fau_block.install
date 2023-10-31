@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Contains install and update functions for fau_block.
+ */
+
+use Drupal\Core\File\FileSystemInterface;
+
+/**
+ * Implements hook_install().
+ */
+function fau_block_install() {
+  // Create the directory containing the custom configs.
+  /** @var \Drupal\Core\File\FileSystem */
+  $fileSystem = \Drupal::service('file_system');
+  // The path has to be in its own varaiable, since it is passed by reference, which is not possible with literals(?).
+  $path = 'public://fau_block';
+  $fileSystem->prepareDirectory($path, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function fau_block_uninstall() {
+  // Remove the custom directory folder.
+  $directory = 'public://fau_block';
+  $file_system = \Drupal::service('file_system');
+  $file_system->deleteRecursive($directory);
+}

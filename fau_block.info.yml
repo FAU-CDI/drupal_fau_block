@@ -1,0 +1,5 @@
+name: FAU Block
+descriptiom: A module to show a FAU legal block
+core: 8.x
+type: module
+core_version_requirement: ^8 || ^9 || ^10
