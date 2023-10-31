@@ -204,16 +204,24 @@ class LegalBlock extends BlockBase {
     }
 
     /**
-     * Loop though all valus in the template and sanitize them.
+     * Loop though all values in the template and sanitize them.
      *
      * @param array $templateTypes
      *   The template values from configs.
      *
      * @return array
-     *   The sanizized template.
+     *   The sanitized template.
      */
     protected function sanitizeValues(array $templateTypes): array {
         $safeAttr = function(string $value) { return htmlspecialchars($value, ENT_QUOTES, 'UTF-8'); };
+        $handleUrl = function(string $url) {
+            // Prefix the base path to relative URLs to
+            // handle multi site installations correctly.
+            if (str_starts_with($url, '/')) {
+                $url = \Drupal::request()->getBasePath() . $url;
+            }
+            return htmlspecialchars($url, ENT_QUOTES, 'UTF-8');
+        };
         $safeHtml = function(string $text) { return strip_tags($text); };
         $id = function($value) { return $value; };
         // Mapping the different values to each sanitizing function.
@@ -222,11 +230,11 @@ class LegalBlock extends BlockBase {
                 'image' => $safeAttr,
                 'alt' => $safeAttr,
                 'height' => $id,
-                'url' => $safeAttr,
+                'url' => $handleUrl,
             ],
             'links' => [
                 'text' => $safeHtml,
-                'url' => $safeHtml,
+                'url' => $handleUrl,
             ],
         ];
 
