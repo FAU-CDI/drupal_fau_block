@@ -1,8 +1,8 @@
 {# fau_block/templates/block--fau-block--default.html.twig #}
-<table style="border-spacing: 30px;">
+<table>
     <tbody>
         <tr>
-            <td>
+            <td style="width: 10%; margin: 20px;">
                 {% for link in links %}
                     <p>
                         <a href='{{ link.url }}'>{{ link.text }}</a></br>
@@ -10,12 +10,13 @@
                 {% endfor %}
             </td>
             {% for logo in logos %}
-                <td>
+                <td style="width: {{ 90/(logos|length) }}%; text-align: center; margin: 20px; padding: 20px;">
                     <a href="{{ logo.url }}" target="_blank" rel="noopener noreferer">
-                        <img alt="{{ logo.alt }}" src="{{ logo.image }}" style="height: {{ height }}px; " />
+                        <img alt="{{ logo.alt }}" src="{{ logo.image }}" style="height: auto; max-height: {{ height }}px;" />
                     </a>
                 </td>
             {% endfor %}
         </tr>
     </tbody>
 </table>
+
