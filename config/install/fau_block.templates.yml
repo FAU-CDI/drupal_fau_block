@@ -35,10 +35,26 @@ logos:
       alt: FAU Competence Center for Research Data and Information
       height: 110
       url: https://www.cdi.fau.de/
+  CDI:
+    - image: fau_logo.svg
+      alt: FAU
+      height: 80
+      url: https://fau.de/
+    - image: cdi_logo.svg
+      alt: FAU Competence Center for Research Data and Information
+      height: 90
+      url: https://www.cdi.fau.de/
+    - image: wisski_logo.png
+      alt: WissKI
+      height: 130
+      url: http://wiss-ki.eu/
+
 
 links:
   Empty: []
   CDI:
+    - text: Sammlungen und Museen
+      url: https://www.fau.de/universitaet/universitaetsprofil/geschichte-und-erinnerungskultur/sammlung-und-museen/
     - text: Impressum
       url: /impressum
     - text: Barrierefreiheit
